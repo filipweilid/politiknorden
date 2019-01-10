@@ -15,5 +15,5 @@ export class AppComponent implements OnInit {
     this.data$ = this.http.getPartyWiki('Moderaterna');
   }
 
-  title = 'Politik';
+  title = 'Politiknördarna';
 }

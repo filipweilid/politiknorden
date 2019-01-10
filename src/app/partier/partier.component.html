@@ -1,0 +1,10 @@
+<h2>Riksdagspartier</h2>
+<ul class="partier">
+  <li *ngFor="let parti of partier"
+    [class.selected]="parti === selectedParti"
+    (click)="onSelect(parti)">
+    <span class="badge">{{parti.id}}</span> {{parti.name}}
+  </li>
+</ul>
+
+<app-parti-detail [parti]="selectedParti"></app-parti-detail>
