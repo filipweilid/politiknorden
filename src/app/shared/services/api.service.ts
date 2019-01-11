@@ -67,8 +67,9 @@ export class ApiService {
         let options = {
             params: new HttpParams()
                 .set('parti', party)
+                .set('rdlstatus', 'tjanst')
         }
-        return this.http.get<PersonApi>('http://data.riksdagen.se/personlista/?iid=&fnamn=&enamn=&f_ar=&kn=&valkrets=&rdlstatus=&org=&utformat=json&termlista=', options).pipe(
+        return this.http.get<PersonApi>('http://data.riksdagen.se/personlista/?iid=&fnamn=&enamn=&f_ar=&kn=&valkrets=&org=&utformat=json&termlista=', options).pipe(
             map(data => {
                 a[party] = data;
                 this.storedParties.next(a);
