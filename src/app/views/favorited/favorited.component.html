@@ -19,7 +19,7 @@
                     <mat-header-cell *matHeaderCellDef></mat-header-cell>
                     <mat-cell *matCellDef="let row">
                         <button mat-icon-button (click)="toggleFavorite(row)">
-                            <mat-icon>
+                            <mat-icon color='accent'>
                                 {{getFavoriteStatus(row)}}
                             </mat-icon>
                         </button>
