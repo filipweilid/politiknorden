@@ -12,11 +12,12 @@ export class FavoritedComponent implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
     displayedColumns = ['favorite', 'name', 'valkrets', 'status', 'party'];
     dataSource: MatTableDataSource<any>;
+    favorites: any[] = this.storage.load('favorites');
 
     constructor(private storage: StorageService, private apiService: ApiService) { }
 
     ngOnInit() {
-        this.apiService.storedFavorites.next(this.storage.load('favorites'));
+        this.apiService.storedFavorites.next(this.favorites ? this.favorites : []);
         this.apiService.storedFavorites.asObservable().subscribe(data => {
             this.dataSource = new MatTableDataSource(data);
             this.dataSource.sortingDataAccessor = (item, column) => {
