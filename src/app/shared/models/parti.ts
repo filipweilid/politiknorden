@@ -1,4 +1,4 @@
 export class Parti {
-    id: number;
+    id: string;
     name: string;
-  }
+}

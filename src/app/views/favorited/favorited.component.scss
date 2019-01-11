@@ -1,0 +1,16 @@
+.mat-row {
+
+    &:hover {
+        background: #ddd;
+        cursor: pointer;
+    }
+}
+
+.not-found {
+    margin: 1rem;
+    
+}
+
+.mat-column-favorite {
+    flex: 0 0 64px;
+}

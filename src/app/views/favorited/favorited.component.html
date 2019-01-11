@@ -1,0 +1,56 @@
+<ng-container>
+    <mat-card>
+        <mat-card-title>
+            FAVORITER
+        </mat-card-title>
+        <mat-card-content>
+            <div fxFlexLayout="row">
+                <mat-form-field appearance="outline" fxFlex="1 0 0%">
+                    <mat-label>Sök</mat-label>
+                    <input matInput (keyup)="applyFilter($event.target.value)" [disabled]="!dataSource.data.length">
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+            </div>
+            <mat-divider></mat-divider>
+            <mat-table [dataSource]="dataSource" matSort matSortDisableClear="true" matSortDirection="asc"
+                matSortActive="name">
+
+                <ng-container matColumnDef="favorite">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <button mat-icon-button (click)="toggleFavorite(row)">
+                            <mat-icon>
+                                {{getFavoriteStatus(row)}}
+                            </mat-icon>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Namn </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.tilltalsnamn}} {{row.efternamn}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="valkrets">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Valkrets </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.valkrets}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="party">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Parti </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.parti}} </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <div *ngIf="!dataSource.data.length" class="not-found">Du har inga tillagda favoriter, prova lägga till
+                några.</div>
+        </mat-card-content>
+    </mat-card>
+</ng-container>

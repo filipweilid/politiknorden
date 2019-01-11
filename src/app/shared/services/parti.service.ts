@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Parti } from './parti';
-import { PARTIER } from './mock-partier';
+import { Parti } from '../models/parti';
+import { PARTIER } from '../models/mock-partier';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 
