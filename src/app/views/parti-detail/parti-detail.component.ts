@@ -18,6 +18,7 @@ export class PartiDetailComponent implements AfterViewInit {
     partier: Parti[] = PARTIER;
     persons$: any;
     favorites$: any;
+    data$: any;
 
     constructor(private route: ActivatedRoute, private apiService: ApiService) { }
 
@@ -25,6 +26,10 @@ export class PartiDetailComponent implements AfterViewInit {
         setTimeout(() => {
             this.route.params.subscribe(params => {
                 this.parti = this.partier.find(parti => parti.id.toString() === params.id);
+                let wikiLink = this.partier.find(item => item.id === params.id);
+                if (wikiLink) {
+                    this.data$ = this.apiService.getPartyWiki(wikiLink.wiki);
+                }
 
                 this.apiService.getPartyMembers(params.id).subscribe(data => {
 

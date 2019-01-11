@@ -7,6 +7,8 @@
             </div>
         </mat-card-title>
         <mat-card-content>
+            <p>{{data$ | async}}</p>
+            <mat-divider></mat-divider>
             <div fxFlexLayout="row">
                 <mat-form-field appearance="outline" fxFlex="1 0 0%">
                     <mat-label>Sök</mat-label>

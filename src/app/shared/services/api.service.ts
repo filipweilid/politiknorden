@@ -18,10 +18,19 @@ export interface PersonApi {
 export class ApiService {
     storedParties = new BehaviorSubject<{}>({});
     storedFavorites = new BehaviorSubject<any[]>([]);
+    storedWiki = new BehaviorSubject<any[]>([]);
 
     constructor(private http: HttpService, private storage: StorageService) { }
 
     getPartyWiki(title: string): Observable<any> {
+        let a = this.storedWiki.getValue();
+
+        if (a[title]) {
+            return this.storedWiki.asObservable().pipe(
+                map(list => list[title])
+            )
+        }
+
         let options = {
             params: new HttpParams()
                 .set('origin', '*')
@@ -34,6 +43,8 @@ export class ApiService {
             map(data => {
                 let text = data['query']['pages']
                 for (let item in text) {
+                    a[title] = text[item].extract;
+                    this.storedWiki.next(a);
                     return text[item].extract
                 }
             })

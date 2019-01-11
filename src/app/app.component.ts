@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private http: ApiService) { }
 
   ngOnInit() {
-    this.data$ = this.http.getPartyWiki('Moderaterna');
+
   }
 
   title = 'Politiknördarna';
