@@ -12,7 +12,7 @@ export interface TwitterApi {
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, AfterViewInit {
     data$: any;
@@ -22,7 +22,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     mainMenu = new BehaviorSubject<boolean>(true);
     tweetSidenav = new BehaviorSubject<boolean>(true);
 
-    constructor(private http: ApiService, private http_: HttpClient) { }
+    constructor(private http: ApiService, private http_: HttpClient) {
+    }
 
     ngOnInit() {
     }

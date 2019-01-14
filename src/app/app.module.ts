@@ -30,7 +30,7 @@ import { NgxLinkifyjsModule } from 'ngx-linkifyjs';
         NgxLinkifyjsModule.forRoot(
             {
                 enableHash: false, // optional - default true
-                enableMention: false // optional - default true
+                enableMention: true // optional - default true
             }
         )
     ],

@@ -23,7 +23,7 @@
                 <ng-container matColumnDef="favorite">
                     <mat-header-cell *matHeaderCellDef></mat-header-cell>
                     <mat-cell *matCellDef="let row">
-                        <button mat-icon-button (click)="toggleFavorite(row)">
+                        <button mat-icon-button (click)="toggleFavorite(row); $event.stopPropagation()">
                             <mat-icon color='accent'>
                                 {{getFavoriteStatus(row)}}
                             </mat-icon>

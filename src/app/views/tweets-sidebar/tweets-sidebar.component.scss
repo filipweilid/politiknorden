@@ -1,4 +1,25 @@
 .mat-card {
-    margin-bottom: 8px;
+    //margin-bottom: 8px;
     box-shadow: none;
+}
+
+.no-tweets-found, .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.date, .mat-icon {
+    margin: .5rem;
+}
+
+.mat-badge-medium .mat-badge-content {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+}
+
+a {
+    text-decoration: none;
 }
