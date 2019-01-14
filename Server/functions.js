@@ -26,7 +26,7 @@ functions = {
         var searchquery = req.query.query;
         var encsearchquery = encodeURIComponent(searchquery);
         var bearerheader = 'Bearer ' + config.bearertoken;
-        request.get('https://api.twitter.com/1.1/search/tweets.json?q=' + encsearchquery + ' AND -RT' + '&count=100' +
+        request.get('https://api.twitter.com/1.1/search/tweets.json?q=' + encsearchquery + ' AND -RT' + '&count=100' + '&tweet_mode=extended' +
             '&result_type=recent', { headers: { 'Authorization': bearerheader } }, function (error, body, response) {
                 if (error)
                     console.log(error);
