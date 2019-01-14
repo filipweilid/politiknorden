@@ -3,15 +3,29 @@
 <!-- <app-messages></app-messages> -->
 
 
-<mat-toolbar color="primary">Politiknörden</mat-toolbar>
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="toggleSidenav('mainmenu')">
+        <mat-icon> {{(mainMenu | async) ? 'close' : 'menu'}} </mat-icon>
+    </button>
+    Politiknörden
+</mat-toolbar>
 <mat-sidenav-container class="example-container">
-    <mat-sidenav mode="side" opened>
+    <mat-sidenav mode="side" [opened]="mainMenu | async">
         <app-partier></app-partier>
     </mat-sidenav>
-    <mat-sidenav class="tweets-sidenav" mode="side" position="end" opened>
+    <mat-sidenav mode="side" position="end" [opened]="tweetSidenav | async">
         <router-outlet name="tweets"></router-outlet>
     </mat-sidenav>
-    <main>
-        <router-outlet></router-outlet>
-    </main>
+    <mat-sidenav-content>
+        <div class="tweet-sidenav-toggler" fxLayout="row" fxLayoutAlign="end">
+            <div class="mat-elevation-z1">
+                <button mat-icon-button (click)="toggleSidenav('tweets')">
+                    <mat-icon>{{(tweetSidenav | async) ? 'close' : 'menu'}}</mat-icon>
+                </button>
+            </div>
+        </div>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </mat-sidenav-content>
 </mat-sidenav-container>

@@ -17,8 +17,8 @@ export interface TwitterApi {
 })
 export class TweetsSidebarComponent implements OnInit {
     data$: any;
-    searchquery = 'Ulf Kristersson';
-    tweetsdata;
+    searchquery = '';
+    tweetsdata: any;
 
     constructor(private http: ApiService, private http_: HttpClient, private route: ActivatedRoute) { }
 

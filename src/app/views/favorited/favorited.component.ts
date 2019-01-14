@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-favorited',
@@ -14,9 +15,10 @@ export class FavoritedComponent implements OnInit {
     dataSource: MatTableDataSource<any>;
     favorites: any[] = this.storage.load('favorites');
 
-    constructor(private storage: StorageService, private apiService: ApiService) { }
+    constructor(private storage: StorageService, private apiService: ApiService, private router: Router) { }
 
     ngOnInit() {
+        this.router.navigateByUrl('bookmarked');
         this.apiService.storedFavorites.next(this.favorites ? this.favorites : []);
         this.apiService.storedFavorites.asObservable().subscribe(data => {
             this.dataSource = new MatTableDataSource(data);
@@ -43,5 +45,9 @@ export class FavoritedComponent implements OnInit {
 
     applyFilter(filterValue: string) {
         this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
+
+    navigateToTweets(row) {
+        this.router.navigateByUrl(`/bookmarked(tweets:${row.tilltalsnamn} ${row.efternamn})`);
     }
 }

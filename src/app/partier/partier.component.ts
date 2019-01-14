@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Parti } from '../shared/models/parti';
 import { PartiService } from '../shared/services/parti.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-partier',
@@ -15,7 +16,7 @@ export class PartierComponent implements OnInit {
     }
 
 
-    constructor(private partiService: PartiService) { }
+    constructor(private partiService: PartiService, private router: Router) { }
 
     getPartier(): void {
         this.partiService.getPartier()
@@ -23,6 +24,10 @@ export class PartierComponent implements OnInit {
     }
     ngOnInit() {
         this.getPartier()
+    }
+
+    gotoLink(parti: Parti) {
+        this.router.navigateByUrl(`/party/${parti.id}(tweets:${parti.name})`);
     }
 
 }

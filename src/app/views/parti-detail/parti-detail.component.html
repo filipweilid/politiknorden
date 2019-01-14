@@ -7,7 +7,7 @@
             </div>
         </mat-card-title>
         <mat-card-content>
-            <p>{{data$ | async}}</p>
+            <app-read-more [data]="data$ | async"></app-read-more>
             <mat-divider></mat-divider>
             <div class="search" fxFlexLayout="row">
                 <mat-form-field appearance="outline" fxFlex="1 0 0%">
