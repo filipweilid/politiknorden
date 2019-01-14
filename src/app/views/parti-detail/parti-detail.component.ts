@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { Parti } from '../../shared/models/parti';
 import { PARTIER } from '../../shared/models/mock-partier'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../shared/services/api.service';
 import { MatSort, MatTableDataSource } from '@angular/material';
 
@@ -20,7 +20,7 @@ export class PartiDetailComponent implements AfterViewInit {
     favorites$: any;
     data$: any;
 
-    constructor(private route: ActivatedRoute, private apiService: ApiService) { }
+    constructor(private route: ActivatedRoute, private apiService: ApiService, private router: Router) { }
 
     ngAfterViewInit() {
         setTimeout(() => {
@@ -64,4 +64,7 @@ export class PartiDetailComponent implements AfterViewInit {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
+    navigateToTweets(row) {
+        this.router.navigateByUrl(`/party/${row.parti}(tweets:${row.tilltalsnamn} ${row.efternamn})`);
+    }
 }

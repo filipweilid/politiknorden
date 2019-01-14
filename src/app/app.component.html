@@ -8,9 +8,10 @@
     <mat-sidenav mode="side" opened>
         <app-partier></app-partier>
     </mat-sidenav>
-    <mat-sidenav-content>
-        <main>
-            <router-outlet></router-outlet>
-        </main>
-    </mat-sidenav-content>
+    <mat-sidenav class="tweets-sidenav" mode="side" position="end" opened>
+        <router-outlet name="tweets"></router-outlet>
+    </mat-sidenav>
+    <main>
+        <router-outlet></router-outlet>
+    </main>
 </mat-sidenav-container>

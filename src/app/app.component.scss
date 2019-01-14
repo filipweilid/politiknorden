@@ -1,6 +1,10 @@
 .example-container {
     margin-top: 64px;
     height: calc(100vh - 64px);
+
+    .mat-sidenav-container {
+        height: 100%;
+    }
 }
 
 .mat-toolbar {
@@ -8,6 +12,10 @@
     top: 0;
     left: 0;
     right: 0;
+}
+
+.tweets-sidenav {
+    width: 25vw;
 }
 
 main {
