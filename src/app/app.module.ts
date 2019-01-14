@@ -10,6 +10,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgxLinkifyjsModule } from 'ngx-linkifyjs';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         CommonModule,
         BrowserAnimationsModule,
         SharedModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        NgxLinkifyjsModule.forRoot(
+            {
+                enableHash: false, // optional - default true
+                enableMention: false // optional - default true
+            }
+        )
     ],
     providers: [],
     bootstrap: [AppComponent]

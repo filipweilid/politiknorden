@@ -6,6 +6,7 @@ import { TweetsSidebarComponent } from './views/tweets-sidebar/tweets-sidebar.co
 import { SharedModule } from './shared/shared.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonModule } from '@angular/common';
+import { NgxLinkifyjsModule } from 'ngx-linkifyjs';
 
 const routes: Routes = [
     { path: 'bookmarked', component: FavoritedComponent },
@@ -20,7 +21,7 @@ const routes: Routes = [
         FavoritedComponent,
         TweetsSidebarComponent
     ],
-    imports: [RouterModule.forRoot(routes), SharedModule, FlexLayoutModule, CommonModule],
+    imports: [RouterModule.forRoot(routes), SharedModule, FlexLayoutModule, CommonModule, NgxLinkifyjsModule],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }
